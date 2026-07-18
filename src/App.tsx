@@ -1,10 +1,24 @@
 import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Home from './pages/Home';
+import Artisan from './pages/Artisan';
+import NotFound from './pages/NotFound';
 
 export default function App() {
   return (
-    <div style={{ textAlign: 'center', padding: '50px' }}>
-      <h1>Plateforme Artisans Auvergne-Rhône-Alpes</h1>
-      <p>L'environnement React, TypeScript et Sass est prêt !</p>
-    </div>
+    <Router>
+      
+      <Routes>
+        {/* Route pour la page d'accueil */}
+        <Route path="/" element={<Home />} />
+        
+        {/* Route dynamique pour la fiche d'un artisan (ex: /artisan/4) */}
+        <Route path="/artisan/:id" element={<Artisan />} />
+        
+        {/* Route de secours (fallback) : si l'URL ne correspond à rien, on affiche la 404 */}
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+
+    </Router>
   );
 }
