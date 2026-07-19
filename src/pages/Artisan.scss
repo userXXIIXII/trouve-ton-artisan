@@ -1,116 +1,52 @@
 .artisan-page {
-  padding: 3rem 1.5rem;
-  max-width: 800px;
-  margin: 0 auto;
+    padding: 3rem 1.5rem;
+    max-width: 800px;
+    margin: 0 auto;
 }
 
 .artisan-info {
-  margin-bottom: 2rem;
+    margin-bottom: 2rem;
 
-  .artisan-name {
-    color: var(--dark-blue, #004d85);
-    font-size: 2rem;
-    font-weight: 800;
-    margin-bottom: 0.5rem;
-  }
-
-  .artisan-rating {
-    display: flex;
-    gap: 0.25rem;
-    margin-bottom: 1.5rem;
-
-    .star {
-      color: #e0e0e0;
-      &.active {
-        color: #7cb342;
-      }
+    .artisan-name {
+        color: var(--dark-blue, #004d85);
+        font-size: 2rem;
+        font-weight: 800;
+        margin-bottom: 0.5rem;
     }
-  }
 
-  .artisan-specialty-location {
-    font-size: 1.25rem;
-    font-weight: 700;
-    color: #333333;
-    margin-bottom: 1rem;
-  }
+    .artisan-rating {
+        display: flex;
+        gap: 0.25rem;
+        margin-bottom: 1.5rem;
 
-  .artisan-about {
-    font-size: 1rem;
-    font-style: italic;
-    color: #555555;
-    line-height: 1.6;
-  }
+        .star {
+        color: #e0e0e0;
+            &.active {
+                color: #7cb342;
+            }
+        }
+    }
+
+    .artisan-specialty-location {
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: #333333;
+        margin-bottom: 1rem;
+    }
+
+    .artisan-about {
+        font-size: 1rem;
+        font-style: italic;
+        color: #555555;
+        line-height: 1.6;
+    }
 }
 
 .divider {
-  border: none;
-  height: 2px;
-  background-color: #e6f0f9;
-  width: 50%;
-  margin: 2.5rem auto;
+    border: none;
+    height: 2px;
+    background-color: #e6f0f9;
+    width: 50%;
+    margin: 2.5rem auto;
 }
 
-.artisan-contact {
-  .contact-title {
-    text-align: center;
-    color: #7cb342;
-    font-size: 1.5rem;
-    font-weight: 700;
-    margin-bottom: 2rem;
-  }
-
-  .contact-form {
-    display: flex;
-    flex-direction: column;
-    gap: 1.25rem;
-    margin-bottom: 1rem;
-
-    input, textarea {
-      width: 100%;
-      padding: 1rem 1.25rem;
-      font-family: inherit;
-      font-size: 1rem;
-      border: none;
-      border-radius: 8px;
-      background-color: #f4f7f9;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-      color: #333;
-      
-      &::placeholder {
-        color: #999999;
-      }
-
-      &:focus {
-        outline: 2px solid var(--primary-blue, #007bff);
-      }
-    }
-
-    textarea {
-      resize: vertical; 
-    }
-
-    .submit-btn {
-      width: 100%;
-      padding: 1.25rem;
-      background-color: var(--primary-blue, #007bff);
-      color: white;
-      font-size: 1.1rem;
-      font-weight: 700;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: background-color 0.2s ease;
-
-      &:hover {
-        background-color: #0056b3;
-      }
-    }
-  }
-
-  .response-time {
-    color: var(--primary-blue, #007bff);
-    font-style: italic;
-    font-size: 0.95rem;
-    margin-top: 1rem;
-  }
-}
