@@ -4,6 +4,7 @@ import Header from './components/Header';
 import Home from './pages/Home';
 import Artisan from './pages/Artisan';
 import NotFound from './pages/NotFound';
+import Footer from './components/Footer';
 
 export default function App() {
   return (
@@ -22,6 +23,8 @@ export default function App() {
         <Route path="*" element={<NotFound />} />
       </Routes>
 
+      <Footer />
+      
     </Router>
   );
 }
