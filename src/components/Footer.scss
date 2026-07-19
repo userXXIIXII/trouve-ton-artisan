@@ -1,0 +1,96 @@
+/* 🏢 Conteneur Principal */
+.main-footer {
+    background-color: #3b4250; /* Le gris-bleu sombre de la maquette */
+    color: #ffffff;
+    padding: 4rem 0;
+    margin-top: auto; /* S'assure que le footer reste en bas */
+}
+
+.footer-container {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+
+    /* Sur PC, on place les deux blocs côte à côte avec un espacement défini */
+    @media (min-width: 768px) {
+        flex-direction: row;
+        justify-content: center;
+        gap: 15%; /* Crée l'écart central visible sur la grille Figma */
+    }
+}
+
+/* 🔹 Bloc Gauche : Adresse */
+.footer-address {
+    p {
+        margin: 0;
+        line-height: 1.6;
+        font-size: 0.95rem;
+        color: #ffffff;
+    }
+
+    .region-name {
+        margin-bottom: 1.5rem;
+    }
+
+    .address-lines {
+        margin-bottom: 1.5rem;
+    }
+
+    .phone-link {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: #ffffff;
+        text-decoration: none;
+        font-size: 0.95rem;
+        transition: opacity 0.2s;
+
+        &:hover {
+        opacity: 0.8;
+        }
+
+        .phone-icon {
+        /* Ajustement fin pour aligner l'icône avec le texte */
+        margin-top: -2px;
+        }
+    }
+}
+
+/* 🔹 Bloc Droite : Liens Légaux */
+.footer-links {
+    ul {
+        list-style: none; /* On retire les puces par défaut du navigateur */
+        padding: 0;
+        margin: 0;
+
+        li {
+        margin-bottom: 1rem;
+        display: flex;
+        align-items: center;
+
+        /* Recréation des puces rondes exactement comme sur Figma */
+        &::before {
+            content: "•";
+            color: #ffffff;
+            font-size: 1.2rem;
+            margin-right: 0.5rem;
+            line-height: 0;
+        }
+
+        a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: text-decoration 0.2s;
+
+            &:hover {
+            text-decoration: underline;
+            }
+        }
+        }
+    }
+}
