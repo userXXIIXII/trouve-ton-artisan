@@ -1,0 +1,92 @@
+/* Conteneur principal */
+.home-page {
+    padding: 3rem 0;
+    background-color: #ffffff;
+}
+
+.container {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+/* Titres et séparateurs */
+.section-title {
+    color: var(--dark-blue);
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.title-separator {
+    width: 45px;
+    height: 4px;
+    background-color: var(--primary-blue);
+    margin-bottom: 2.5rem;
+}
+
+/* Section Introduction */
+.intro-section {
+    margin-bottom: 4rem;
+}
+
+.steps-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1.5rem 0;
+
+    li {
+        margin-bottom: 1rem;
+        font-size: 1.05rem;
+        color: var(--text-dark);
+        display: flex;
+        align-items: center;
+
+        /* Tiret bleu décoratif avant chaque ligne */
+        &::before {
+        content: "—";
+        color: var(--primary-blue);
+        font-weight: bold;
+        margin-right: 0.5rem;
+        }
+    }
+
+    .step-label {
+        color: var(--primary-blue);
+        font-weight: bold;
+        margin-right: 0.5rem;
+    }
+}
+
+.response-time {
+    color: var(--primary-blue);
+    font-style: italic;
+    font-size: 0.95rem;
+}
+
+/* Grille des cartes Artisans */
+.artisans-section {
+    margin-bottom: 4rem;
+}
+
+/* Grille des cartes Artisans */
+.artisans-grid {
+    display: grid;
+    gap: 2rem;
+    /* Par défaut sur écran PC : 3 colonnes strictement égales */
+    grid-template-columns: repeat(3, 1fr); 
+}
+
+/* Sur écran moyen (Tablette ou petit PC) */
+@media (max-width: 900px) {
+    .artisans-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Sur petit écran (Mobile) */
+@media (max-width: 600px) {
+    .artisans-grid {
+        /* On passe sur 1 seule colonne */
+        grid-template-columns: 1fr;
+    }
+}

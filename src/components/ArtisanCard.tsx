@@ -1,19 +1,29 @@
-import { IoStar } from 'react-icons/io5';
+import { IoStar, IoChevronForward } from 'react-icons/io5';
+import { Link } from 'react-router-dom';
 import './ArtisanCard.scss';
 
-// 1. Les props correspondent désormais exactement aux clés du JSON
+// Ajout de la propriété facultative isClickable (booléen)
 interface ArtisanCardProps {
+    id: string;
     name: string;
-    note: string;       // La note arrive sous forme de texte ("4")
-    specialty: string;  // On utilise la spécialité pour l'affichage
-    location: string;   // Localisation unique
+    note: string;
+    specialty: string;
+    location: string;
+    isClickable?: boolean; 
 }
 
-export default function ArtisanCard({ name, note, specialty, location }: ArtisanCardProps) {
-    // Conversion de la note (texte) en nombre pour gérer l'affichage des étoiles
+export default function ArtisanCard({ 
+    id, 
+    name, 
+    note, 
+    specialty, 
+    location, 
+    isClickable = false // Par défaut, la carte n'est pas cliquable
+    }: ArtisanCardProps) {
     const ratingValue = parseInt(note, 10) || 0;
 
-    return (
+    // 1. On stocke le visuel de la carte dans une constante
+    const cardContent = (
         <article className="artisan-card">
         <h3 className="artisan-name">{name}</h3>
         
@@ -27,8 +37,25 @@ export default function ArtisanCard({ name, note, specialty, location }: Artisan
             ))}
         </div>
         
-        <p className="artisan-category">{specialty}</p>
+        <p className="artisan-category"><strong>{specialty}</strong></p>
         <p className="artisan-location">{location}</p>
+        
+        {isClickable && (
+            <IoChevronForward className="click-arrow" size={24} />
+        )}
+        
         </article>
     );
+
+    // 2. Rendu conditionnel : si la carte doit être cliquable, on l'enveloppe du Link
+    if (isClickable) {
+        return (
+        <Link to={`/artisan/${id}`} className="artisan-card-link">
+            {cardContent}
+        </Link>
+        );
+    }
+
+    // 3. Sinon, on retourne la carte simple, sans interactivité
+    return cardContent;
 }
