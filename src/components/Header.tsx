@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { IoSearchOutline, IoMenuOutline, IoCloseOutline, IoChevronForwardOutline } from 'react-icons/io5';
-import './Header.css';
+import './Header.scss';
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
