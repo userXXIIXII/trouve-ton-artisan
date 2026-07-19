@@ -1,0 +1,52 @@
+/* src/components/Artisan.scss */
+
+.artisan-card {
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 2rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    
+    /* L'ombre douce autour de la carte */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    border: 1px solid var(--border-color);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+  /* Petit effet quand la souris passe dessus */
+    &:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    }
+
+    .artisan-name {
+        color: var(--dark-blue);
+        font-size: 1.25rem;
+        font-weight: 700;
+        margin: 0 0 0.75rem 0;
+    }
+
+  /* Gestion des étoiles */
+    .artisan-rating {
+        display: flex;
+        gap: 0.25rem;
+        margin-bottom: 1rem;
+
+        .star {
+        color: #e0e0e0; /* Gris pour les étoiles vides */
+
+        &.active {
+            color: #7cb342; /* Vert pour les étoiles pleines */
+        }
+        }
+    }
+
+    .artisan-category,
+    .artisan-location {
+        margin: 0.2rem 0;
+        color: #6c757d;
+        font-style: italic;
+        font-size: 0.95rem;
+    }
+}
