@@ -1,5 +1,4 @@
 import ArtisanCard from '../components/ArtisanCard';
-import Artisan from '../components/ArtisanCard';
 import artisansData from '../data/datas.json';
 import './Home.scss';
 
