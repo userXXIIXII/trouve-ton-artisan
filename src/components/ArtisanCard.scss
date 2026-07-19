@@ -1,52 +1,79 @@
-/* src/components/Artisan.scss */
+/* Supprime le soulignement par défaut du lien */
+.artisan-card-link {
+    text-decoration: none;
+    color: inherit;
+    display: block; 
+
+    &:hover {
+        text-decoration: none;
+    }
+}
 
 .artisan-card {
-    background-color: #ffffff;
+    position: relative; 
+    
+    background-color: #f8f9fa; 
     border-radius: 8px;
-    padding: 2rem 1.5rem;
+    
+    padding: 1rem 1.5rem; 
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
     
-    /* L'ombre douce autour de la carte */
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-    border: 1px solid var(--border-color);
+    /* Ombre */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+    border: none; 
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 
-  /* Petit effet quand la souris passe dessus */
     &:hover {
         transform: translateY(-5px);
-        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
-    }
+        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.08);
+}
 
-    .artisan-name {
-        color: var(--dark-blue);
-        font-size: 1.25rem;
-        font-weight: 700;
-        margin: 0 0 0.75rem 0;
-    }
+  /* Nom en gras et bleu */
+.artisan-name {
+    color: var(--dark-blue, #004d85);
+    font-size: 1.1rem; 
+    font-weight: 700;
+    margin: 0 0 0.5rem 0;
+}
 
-  /* Gestion des étoiles */
-    .artisan-rating {
-        display: flex;
-        gap: 0.25rem;
-        margin-bottom: 1rem;
+  /* Étoiles */
+.artisan-rating {
+    display: flex;
+    gap: 0.25rem;
+    margin-bottom: 0.75rem;
 
-        .star {
-        color: #e0e0e0; /* Gris pour les étoiles vides */
+    .star {
+    color: #e0e0e0; 
 
         &.active {
-            color: #7cb342; /* Vert pour les étoiles pleines */
-        }
+            color: #7cb342; 
         }
     }
+}
 
-    .artisan-category,
-    .artisan-location {
-        margin: 0.2rem 0;
-        color: #6c757d;
-        font-style: italic;
-        font-size: 0.95rem;
+  /* Spécialité et Ville : même style (gris, fin, italique) */
+.artisan-category,
+.artisan-location {
+    margin: 0.25rem 0;
+    color: #6c757d;
+    font-style: italic;
+    font-weight: 400; /* Assure que le texte n'est pas en gras */
+    font-size: 0.95rem;
+    }
+
+  /* La flèche de clic */
+.click-arrow {
+    position: absolute;
+    bottom: 1rem; 
+    right: 1rem;  
+    color: var(--dark-blue, #004d85); 
+    transition: transform 0.2s ease;
+}
+
+    &:hover .click-arrow {
+        transform: translateX(5px);
     }
 }
