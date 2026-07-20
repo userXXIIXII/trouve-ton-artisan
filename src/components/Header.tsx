@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { IoSearchOutline, IoMenuOutline, IoCloseOutline, IoChevronForwardOutline } from 'react-icons/io5';
 import './Header.scss';
 
@@ -9,12 +9,12 @@ export default function Header() {
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
-    setIsSearchOpen(false); // Ferme la recherche si on ouvre le menu
+    setIsSearchOpen(false);
   };
 
   const toggleSearch = () => {
     setIsSearchOpen(!isSearchOpen);
-    setIsMenuOpen(false); // Ferme le menu si on ouvre la recherche
+    setIsMenuOpen(false);
   };
 
   const closeAll = () => {
@@ -26,82 +26,54 @@ export default function Header() {
     <header className="main-header">
       <div className="header-container">
         
-        {/* 1. ZONE GAUCHE : Le Logo (aligné à gauche sur mobile) */}
         <div className="header-left">
           <Link to="/" className="logo-link" onClick={closeAll}>
-            <img src="./src/assets/logo.png" alt="Logo Trouve ton artisan" className="logo" />
+            <img src="./src/assets/logo.png" alt="Logo" className="logo" />
           </Link>
         </div>
 
-        {/* 2. ZONE CENTRALE : La Navigation Bureau */}
-        <nav className="desktop-navigation">
+        <nav className="main-nav">
           <ul>
-            <li><Link to="#">Bâtiment</Link></li>
-            <li><Link to="#">Services</Link></li>
-            <li><Link to="#">Fabrication</Link></li>
-            <li><Link to="#">Alimentation</Link></li>
+            <li><NavLink to="/categorie/Bâtiment" onClick={closeAll} className={({ isActive }) => isActive ? "active-link" : ""}>Bâtiment</NavLink></li>
+            <li><NavLink to="/categorie/Services" onClick={closeAll} className={({ isActive }) => isActive ? "active-link" : ""}>Services</NavLink></li>
+            <li><NavLink to="/categorie/Fabrication" onClick={closeAll} className={({ isActive }) => isActive ? "active-link" : ""}>Fabrication</NavLink></li>
+            <li><NavLink to="/categorie/Alimentation" onClick={closeAll} className={({ isActive }) => isActive ? "active-link" : ""}>Alimentation</NavLink></li>
           </ul>
         </nav>
 
-        {/* 3. ZONE DROITE : Actions */}
         <div className="header-actions">
-          
-          {/* 💻 Desktop : Champ de recherche complet */}
           <div className="search-bar-container">
-            <input 
-              type="text" 
-              placeholder="Cherchez ..." 
-              className="search-input"
-              aria-label="Rechercher un artisan"
-            />
+            <input type="text" placeholder="Cherchez ..." className="search-input" />
             <IoSearchOutline className="search-icon-inside" size={18} />
           </div>
 
-          {/* 📱 Mobile : Bouton d'ouverture de la barre de recherche */}
-          <button 
-            className="mobile-search-btn" 
-            onClick={toggleSearch}
-            aria-label="Rechercher"
-          >
+          <button className="mobile-search-btn" onClick={toggleSearch} aria-label="Rechercher">
             <IoSearchOutline size={24} />
           </button>
           
-          {/* 📱 Mobile : Menu Burger */}
-          <button 
-            className="menu-trigger-btn" 
-            onClick={toggleMenu}
-            aria-label={isMenuOpen ? "Fermer le menu" : "Ouvrir le menu"}
-          >
-            {isMenuOpen ? (
-              <IoCloseOutline size={28} />
-            ) : (
-              <IoMenuOutline size={28} />
-            )}
+          <button className="menu-trigger-btn" onClick={toggleMenu} aria-label="Menu">
+            {isMenuOpen ? <IoCloseOutline size={28} /> : <IoMenuOutline size={28} />}
           </button>
         </div>
-
       </div>
 
-      {/* 📱 Mobile : Barre de recherche déroulante (Maquette Search) */}
       <div className={`mobile-search-bar-container ${isSearchOpen ? 'is-open' : ''}`}>
         <div className="mobile-search-input-wrapper">
-          <input type="text" placeholder="Rechercher" autoFocus={isSearchOpen} />
+          <input type="text" placeholder="Rechercher" />
           <IoSearchOutline className="icon" size={20} />
         </div>
       </div>
 
-      {/* 📱 Mobile : Overlay de Navigation */}
       <div className={`mobile-menu-overlay ${isMenuOpen ? 'is-open' : ''}`}>
         <nav className="mobile-navigation">
           <ul>
-            <li><Link to="#" onClick={closeAll}>Bâtiment <span><IoChevronForwardOutline /></span></Link></li>
-            <li><Link to="#" onClick={closeAll}>Services <span><IoChevronForwardOutline /></span></Link></li>
-            <li><Link to="#" onClick={closeAll}>Fabrication <span><IoChevronForwardOutline /></span></Link></li>
-            <li><Link to="#" onClick={closeAll}>Alimentation <span><IoChevronForwardOutline /></span></Link></li>
+            <li><NavLink to="/categorie/Bâtiment" onClick={closeAll} className={({ isActive }) => isActive ? "active-link" : ""}>Bâtiment <span><IoChevronForwardOutline /></span></NavLink></li>
+            <li><NavLink to="/categorie/Services" onClick={closeAll} className={({ isActive }) => isActive ? "active-link" : ""}>Services <span><IoChevronForwardOutline /></span></NavLink></li>
+            <li><NavLink to="/categorie/Fabrication" onClick={closeAll} className={({ isActive }) => isActive ? "active-link" : ""}>Fabrication <span><IoChevronForwardOutline /></span></NavLink></li>
+            <li><NavLink to="/categorie/Alimentation" onClick={closeAll} className={({ isActive }) => isActive ? "active-link" : ""}>Alimentation <span><IoChevronForwardOutline /></span></NavLink></li>
           </ul>
         </nav>
       </div>
-
     </header>
   );
 }
