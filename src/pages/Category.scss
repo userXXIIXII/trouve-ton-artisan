@@ -1,0 +1,52 @@
+/* --- 1. CONFIGURATION PAGE --- */
+.category-page {
+    padding: 4rem 1.5rem 6rem 1.5rem;
+    background-color: #ffffff;
+    min-height: 60vh;
+}
+
+.category-page .container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* --- 2. TITRE & SÉPARATEUR --- */
+.category-title {
+    color: var(--dark-blue);
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.title-separator {
+    width: 60px;
+    height: 4px;
+    background-color: var(--primary-blue);
+    border-radius: 2px;
+}
+
+/* --- 3. GRILLE DES CARTES --- */
+.artisans-grid {
+    display: grid;
+    gap: 2rem;
+    /* Auto-responsive : les cartes font min 300px, sinon elles s'étirent */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    justify-content: center;
+    align-items: start;
+}
+
+/* --- 4. ÉTAT VIDE --- */
+.empty-state {
+    text-align: center;
+    padding: 4rem 0;
+    color: #6c757d;
+    font-size: 1.2rem;
+    font-style: italic;
+}
+
+/* --- 5. RESPONSIVE --- */
+@media (min-width: 1024px) {
+    .artisans-grid {
+        /* Sur grand écran, on limite à 3 colonnes max pour garder une belle taille */
+        grid-template-columns: repeat(3, 1fr);
+    }
+}

@@ -1,262 +1,195 @@
-// 🏢 Conteneur Principal
+/* --- 1. CONFIGURATION GLOBALE --- */
 .main-header {
   position: sticky;
   top: 0;
   left: 0;
   width: 100%;
-  height: 80px; 
+  height: 80px;
   background-color: var(--light-bg);
   border-bottom: 1px solid var(--border-color);
   z-index: 1000;
+}
 
-  .header-container {
-    max-width: 1300px;
-    height: 100%;
-    margin: 0 auto;
-    padding: 0 1.5rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    position: relative;
+.header-container {
+  max-width: 1300px;
+  height: 100%;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Pousse les éléments aux extrémités */
+  position: relative;
+}
+
+/* --- 2. ÉLÉMENTS DU HEADER --- */
+.header-left .logo-link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.header-left .logo {
+  max-height: 150px;
+  width: auto;
+}
+
+.main-nav {
+  display: none; /* Caché sur mobile, affiché par media query */
+}
+
+.main-nav ul {
+  display: flex;
+  list-style: none;
+  gap: 2.5rem;
+  margin: 0;
+  padding: 0;
+}
+
+.main-nav a {
+  text-decoration: none;
+  color: var(--primary-blue);
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding-bottom: 4px;
+  transition: color 0.2s;
+}
+
+.main-nav a:hover {
+  color: var(--dark-blue);
+}
+
+.main-nav a.active-link {
+  color: var(--primary-blue);
+  border-bottom: 2px solid var(--primary-blue);
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  z-index: 1020;
+}
+
+.search-bar-container {
+  display: none; /* Caché sur mobile */
+  position: relative;
+}
+
+.search-input {
+  width: 260px;
+  padding: 0.5rem 2.5rem 0.5rem 1.25rem;
+  border: 1px solid var(--border-color);
+  border-radius: 24px;
+  font-size: 0.85rem;
+  outline: none;
+}
+
+.search-icon-inside {
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--primary-blue);
+  pointer-events: none;
+}
+
+.mobile-search-btn, 
+.menu-trigger-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--primary-blue);
+  display: flex;
+  align-items: center;
+  padding: 0.25rem;
+}
+
+/* --- 3. ÉLÉMENTS MOBILE (Tiroirs & Overlay) --- */
+.mobile-search-bar-container {
+  display: none;
+  width: 100%;
+  padding: 1rem 1.5rem;
+  background: #ffffff;
+  border-bottom: 1px solid var(--border-color);
+  position: absolute;
+  top: 80px;
+  left: 0;
+}
+
+.mobile-search-bar-container.is-open {
+  display: block;
+}
+
+.mobile-search-bar-container input {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid var(--primary-blue);
+  border-radius: 4px;
+}
+
+.mobile-menu-overlay {
+  position: fixed;
+  top: 80px;
+  left: 0;
+  width: 100%;
+  height: calc(100vh - 80px);
+  background: #ffffff;
+  z-index: 1010;
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.3s;
+}
+
+.mobile-menu-overlay.is-open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.mobile-navigation ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.mobile-navigation li {
+  border-bottom: 1px solid #f0f5fa;
+}
+
+.mobile-navigation a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.5rem;
+  text-decoration: none;
+  color: #333;
+  font-size: 1.1rem;
+}
+
+.mobile-navigation a.active-link {
+  color: var(--primary-blue);
+  background-color: #f0f5fa;
+}
+
+/* --- 4. RESPONSIVE (Media Queries) --- */
+@media (min-width: 1024px) {
+  .main-nav {
+    display: block;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
   }
 
-  // 🔹 ZONE GAUCHE : Logo
-  .header-left {
-    display: flex;
-    align-items: center;
-    flex-shrink: 0;
-
-    @media (max-width: 1023px) {
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%, -50%);
-    }
-  }
-
-  .logo-link {
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-
-    .logo {
-      height: auto;
-      max-height: 150px;
-      object-fit: contain;
-    }
-  }
-
-  // 🔹 ZONE CENTRALE : Menu de Navigation Bureau
-  .desktop-navigation {
-    display: none;
-
-    @media (min-width: 1024px) {
-      display: block;
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%, -50%);
-    }
-
-    ul {
-      display: flex;
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      gap: 2.5rem;
-    }
-
-    a {
-      text-decoration: none;
-      color: var(--primary-blue);
-      font-weight: 600;
-      font-size: 0.95rem;
-      transition: color 0.2s ease;
-
-      &:hover {
-        color: var(--dark-blue);
-      }
-    }
-  }
-
-  // 🔹 ZONE DROITE : Actions
-  .header-actions {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    z-index: 1020; 
-  }
-
-  // 📱 Icônes Mobiles (Loupe + Burger)
-  .mobile-search-btn,
-  .menu-trigger-btn {
-    background: none;
-    border: none;
-    cursor: pointer;
-    color: var(--primary-blue);
-    display: flex;
-    align-items: center;
-    padding: 0.25rem;
-
-    @media (min-width: 1024px) {
-      display: none;
-    }
-  }
-
-  // 💻 Barre de recherche arrondie (Desktop)
   .search-bar-container {
-    position: relative;
+    display: block;
+  }
+
+  .mobile-search-btn, 
+  .menu-trigger-btn {
     display: none;
-
-    @media (min-width: 1024px) {
-      display: block; 
-    }
   }
 
-  .search-input {
-    width: 260px;
-    padding: 0.5rem 2.5rem 0.5rem 1.25rem;
-    border: 1px solid var(--border-color);
-    border-radius: 24px;
-    font-size: 0.85rem;
-    background-color: #ffffff;
-    outline: none;
-    transition: border-color 0.2s;
-
-    &::placeholder {
-      color: var(--placeholder-color);
-    }
-
-    &:focus {
-      border-color: var(--primary-blue);
-    }
-  }
-
-  .search-icon-inside {
-    position: absolute;
-    right: 14px;
-    top: 50%;
-    transform: translateY(-50%);
-    color: var(--primary-blue);
-    pointer-events: none;
-  }
-
-  // 📱 Tiroir de recherche (Mobile)
-  .mobile-search-bar-container {
-    display: none;
-    width: 100%;
-    padding: 1rem 1.5rem;
-    background-color: #ffffff;
-    border-bottom: 1px solid var(--border-color);
-    position: absolute;
-    top: 80px;
-    left: 0;
-    z-index: 999;
-
-    &.is-open {
-      display: block;
-    }
-
-    @media (min-width: 1024px) {
-      &.is-open {
-        display: none;
-      }
-    }
-  }
-
-  .mobile-search-input-wrapper {
-    position: relative;
-
-    input {
-      width: 100%;
-      padding: 0.75rem 1rem;
-      border: 1px solid var(--primary-blue);
-      border-radius: 4px;
-      font-size: 1rem;
-      outline: none;
-    }
-
-    .icon {
-      position: absolute;
-      right: 12px;
-      top: 50%;
-      transform: translateY(-50%);
-      color: var(--primary-blue);
-    }
-  }
-
-  // Boutons d'activation du menu mobile
-  .action-btn {
-    background: none;
-    border: none;
-    cursor: pointer;
-    color: var(--text-dark);
-    display: flex;
-    align-items: center;
-    padding: 0.4rem;
-  }
-
-  .close-icon {
-    color: var(--primary-blue);
-  }
-
-  // 📱 Overlay Plein Écran Mobile
   .mobile-menu-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    background-color: #ffffff;
-    z-index: 1010; 
-    padding-top: 80px;
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(-10px);
-    transition: all 0.3s ease;
-
-    &.is-open {
-      opacity: 1;
-      visibility: visible;
-      transform: translateY(0);
-    }
-
-    @media (min-width: 1024px) {
-      display: none;
-    }
-  }
-
-  .mobile-navigation {
-    ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-
-    li {
-      border-bottom: 1px solid #f0f5fa;
-    }
-
-    a {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 1.5rem 1.5rem;
-      text-decoration: none;
-      color: var(--text-dark);
-      font-size: 1.1rem;
-      font-weight: 400;
-
-      &:active, &:hover {
-        background-color: var(--light-bg);
-        color: var(--primary-blue);
-      }
-
-      span {
-        color: var(--primary-blue);
-        display: flex;
-        align-items: center;
-      }
-    }
+    display: none;
   }
 }
+/* Note: Le bloc media query pour max-width: 1023px a été retiré */

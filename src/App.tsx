@@ -4,6 +4,7 @@ import Home from './pages/Home';
 import Artisan from './pages/Artisan';
 import NotFound from './pages/NotFound';
 import Footer from './components/Footer';
+import Category from './pages/Category';
 
 export default function App() {
   return (
@@ -17,9 +18,14 @@ export default function App() {
         
         {/* Route dynamique pour la fiche d'un artisan (ex: /artisan/4) */}
         <Route path="/artisan/:id" element={<Artisan />} />
-        
+
+        {/* Route dynamique pour la page d'une catégorie (ex: /categorie/plomberie) */}
+        <Route path="/categorie/:category" element={<Category />} />
+
         {/* Route de secours (fallback) : si l'URL ne correspond à rien, on affiche la 404 */}
         <Route path="*" element={<NotFound />} />
+
+        
       </Routes>
 
       <Footer />

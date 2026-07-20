@@ -1,23 +1,53 @@
 /* 🎨 Variables de Design (Tokens Figma) */
 :root {
+  /* Couleurs principales (Palette) */
   --primary-blue: #0074c7;
-  --dark-blue: #004d85;
-  --light-bg: #f4f8fb;
-  --text-dark: #212529;
+  --dark-blue: #00497c;
+  --light-bg: #f1f8fc;
+  --text-dark: #384050;
+
+  /* Couleurs d'accentuation (Palette - à utiliser avec parcimonie) */
+  --accent-red: #cd2c2e;
+  --accent-green: #82b864;
+
+  /* Utilitaires (Si non spécifiés dans la palette, vous pouvez garder les vôtres) */
   --border-color: #e5edf5;
   --placeholder-color: #a0aec0;
 }
 
 /* 🧱 Styles Globaux */
 * {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 body {
-  margin: 0;
-  padding: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  color: var(--text-dark);
-  background-color: #ffffff;
-  -webkit-font-smoothing: antialiased;
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    color: var(--text-dark);
+    background-color: var(--light-bg);
+    -webkit-font-smoothing: antialiased;
+}
+
+/* --- Réinitialisation et Layout Global --- */
+html, body, #root {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+#root {
+    display: flex;
+    flex-direction: column;
+}
+
+/* --- Layout avec Sticky Footer --- */
+.app-layout {
+    display: flex;
+    flex-direction: column;
+    flex: 1; /* S'étend pour occuper l'espace */
+}
+
+main {
+    flex: 1; /* Le contenu principal prend tout l'espace vide disponible */
 }
