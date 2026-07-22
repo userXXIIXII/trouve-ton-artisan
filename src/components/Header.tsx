@@ -28,7 +28,7 @@ export default function Header() {
         
         <div className="header-left">
           <Link to="/" className="logo-link" onClick={closeAll}>
-            <img src="./src/assets/logo.png" alt="Logo" className="logo" />
+            <img src="/logo.png" alt="Logo Trouve ton artisan" className="logo" />
           </Link>
         </div>
 
