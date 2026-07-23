@@ -12,7 +12,7 @@
 .artisan-card {
     position: relative; 
     
-    background-color: #f8f9fa; 
+    background-color: var(--light-bg); 
     border-radius: 8px;
     
     padding: 1rem 1.5rem; 
@@ -58,7 +58,7 @@
 .artisan-category,
 .artisan-location {
     margin: 0.25rem 0;
-    color: #6c757d;
+    color: var(--text-dark);
     font-style: italic;
     font-weight: 400; /* Assure que le texte n'est pas en gras */
     font-size: 0.95rem;

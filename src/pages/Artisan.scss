@@ -1,11 +1,8 @@
 .artisan-page {
-    background-color: #ffffff;
-}
-
-.artisan-page {
+    width: 100%;
+    box-sizing: border-box;
     padding: 3rem 1.5rem;
-    max-width: 800px;
-    margin: 0 auto;
+    background-color: #ffffff;
 }
 
 .artisan-info {
@@ -24,7 +21,7 @@
         margin-bottom: 1.5rem;
 
         .star {
-        color: #e0e0e0;
+            color: #e0e0e0;
             &.active {
                 color: #7cb342;
             }
@@ -53,4 +50,3 @@
     width: 50%;
     margin: 2.5rem auto;
 }
-
