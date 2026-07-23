@@ -50,8 +50,12 @@
   }
 
   .logo {
-    max-height: 50px;
+    max-height: 38px;
     width: auto;
+
+    @media (min-width: 1024px) {
+      max-height: 50px;
+    }
   }
 }
 
