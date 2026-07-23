@@ -127,19 +127,30 @@
 }
 
 /* --- 3. ÉLÉMENTS MOBILE (Tiroirs & Overlay) --- */
-.mobile-search-bar-container {
-  display: none;
-  width: 100%;
-  padding: 1rem 1.5rem;
-  background: var(--light-bg);
-  border-bottom: 1px solid var(--border-color);
-  position: absolute;
+.mobile-search-overlay {
+  position: fixed;
   top: 80px;
   left: 0;
+  width: 100%;
+  height: calc(100vh - 80px);
+  background: rgba(0, 0, 0, 0.35); /* Fond semi-transparent pour griser l'arrière-plan */
+  z-index: 1015;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
 
   &.is-open {
-    display: block;
+    opacity: 1;
+    visibility: visible;
   }
+}
+
+.mobile-search-container-inner {
+  background: var(--light-bg);
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid var(--border-color);
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .mobile-search-input-wrapper {
@@ -147,7 +158,7 @@
   width: 100%;
 }
 
-.mobile-search-bar-container input {
+.mobile-search-overlay input {
   width: 100%;
   padding: 0.75rem 2.5rem 0.75rem 1rem;
   border: none;
@@ -158,7 +169,7 @@
   box-sizing: border-box;
 }
 
-.mobile-search-bar-container .icon {
+.mobile-search-overlay .icon {
   position: absolute;
   right: 14px;
   top: 50%;

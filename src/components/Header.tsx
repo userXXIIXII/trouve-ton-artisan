@@ -57,10 +57,12 @@ export default function Header() {
         </div>
       </div>
 
-      <div className={`mobile-search-bar-container ${isSearchOpen ? 'is-open' : ''}`}>
-        <div className="mobile-search-input-wrapper">
-          <input type="text" placeholder="Rechercher" />
-          <IoSearchOutline className="icon" size={20} />
+      <div className={`mobile-search-overlay ${isSearchOpen ? 'is-open' : ''}`} onClick={toggleSearch}>
+        <div className="mobile-search-container-inner" onClick={(e) => e.stopPropagation()}>
+          <div className="mobile-search-input-wrapper">
+            <input type="text" placeholder="Rechercher" />
+            <IoSearchOutline className="icon" size={20} />
+          </div>
         </div>
       </div>
 
