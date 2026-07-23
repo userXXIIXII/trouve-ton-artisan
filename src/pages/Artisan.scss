@@ -1,4 +1,8 @@
 .artisan-page {
+    background-color: #ffffff;
+}
+
+.artisan-page {
     padding: 3rem 1.5rem;
     max-width: 800px;
     margin: 0 auto;
@@ -45,7 +49,7 @@
 .divider {
     border: none;
     height: 2px;
-    background-color: #e6f0f9;
+    background-color: var(--primary-blue);
     width: 50%;
     margin: 2.5rem auto;
 }
