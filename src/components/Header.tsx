@@ -24,7 +24,7 @@ export default function Header() {
 
   return (
     <header className="main-header">
-      <div className="header-container">
+      <div className="header-container container">
         
         <div className="header-left">
           <Link to="/" className="logo-link" onClick={closeAll}>

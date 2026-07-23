@@ -1,4 +1,4 @@
-/* --- 1. CONFIGURATION GLOBALE --- */
+/* --- 1. CONFIGURATION GLOBALE DU HEADER & GRILLE --- */
 .main-header {
   position: sticky;
   top: 0;
@@ -11,56 +11,78 @@
 }
 
 .header-container {
-  max-width: 1300px;
   height: 100%;
-  margin: 0 auto;
-  padding: 0 1.5rem;
   display: flex;
   align-items: center;
-  justify-content: space-between; /* Pousse les éléments aux extrémités */
+  justify-content: space-between;
   position: relative;
+  
+  /* Intégration de la grille globale alignée sur la maquette */
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  box-sizing: border-box;
+
+  /* Format Mobile : marges latérales resserrées */
+  padding-left: 1rem;
+  padding-right: 1rem;
+
+  /* Format Tablette : élargissement progressif des gouttières */
+  @media (min-width: 768px) {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+
+  /* Format Desktop : fixation du plafond de la grille à 1200px */
+  @media (min-width: 1024px) {
+    max-width: 1200px;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
 }
 
-/* --- 2. ÉLÉMENTS DU HEADER --- */
-.header-left .logo-link {
-  display: flex;
-  align-items: center;
-  text-decoration: none;
-}
+/* --- 2. ÉLÉMENTS DU HEADER (DESKTOP & COMMUN) --- */
+.header-left {
+  .logo-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+  }
 
-.header-left .logo {
-  max-height: 150px;
-  width: auto;
+  .logo {
+    max-height: 150px;
+    width: auto;
+  }
 }
 
 .main-nav {
-  display: none; /* Caché sur mobile, affiché par media query */
-}
+  display: none; /* Masqué par défaut sur mobile */
 
-.main-nav ul {
-  display: flex;
-  list-style: none;
-  gap: 2.5rem;
-  margin: 0;
-  padding: 0;
-}
+  ul {
+    display: flex;
+    list-style: none;
+    gap: 2.5rem;
+    margin: 0;
+    padding: 0;
+  }
 
-.main-nav a {
-  text-decoration: none;
-  color: var(--primary-blue);
-  font-weight: 600;
-  font-size: 0.95rem;
-  padding-bottom: 4px;
-  transition: color 0.2s;
-}
+  a {
+    text-decoration: none;
+    color: var(--primary-blue);
+    font-weight: 600;
+    font-size: 0.95rem;
+    padding-bottom: 4px;
+    transition: color 0.2s;
 
-.main-nav a:hover {
-  color: var(--dark-blue);
-}
+    &:hover {
+      color: var(--dark-blue);
+    }
 
-.main-nav a.active-link {
-  color: var(--primary-blue);
-  border-bottom: 2px solid var(--primary-blue);
+    &.active-link {
+      color: var(--primary-blue);
+      border-bottom: 2px solid var(--primary-blue);
+    }
+  }
 }
 
 .header-actions {
@@ -71,7 +93,7 @@
 }
 
 .search-bar-container {
-  display: none; /* Caché sur mobile */
+  display: none; /* Masqué sur mobile */
   position: relative;
 }
 
@@ -114,10 +136,10 @@
   position: absolute;
   top: 80px;
   left: 0;
-}
 
-.mobile-search-bar-container.is-open {
-  display: block;
+  &.is-open {
+    display: block;
+  }
 }
 
 .mobile-search-input-wrapper {
@@ -127,11 +149,13 @@
 
 .mobile-search-bar-container input {
   width: 100%;
-  padding: 0.75rem;
+  padding: 0.75rem 2.5rem 0.75rem 1rem;
   border: none;
   border-right: 1px solid var(--primary-blue);
   border-bottom: 1px solid var(--primary-blue);
   border-radius: 4px;
+  outline: none;
+  box-sizing: border-box;
 }
 
 .mobile-search-bar-container .icon {
@@ -154,39 +178,41 @@
   opacity: 0;
   visibility: hidden;
   transition: 0.3s;
+
+  &.is-open {
+    opacity: 1;
+    visibility: visible;
+  }
 }
 
-.mobile-menu-overlay.is-open {
-  opacity: 1;
-  visibility: visible;
+.mobile-navigation {
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  li {
+    border-bottom: 1px solid #f0f5fa;
+  }
+
+  a {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.5rem;
+    text-decoration: none;
+    color: #333;
+    font-size: 1.1rem;
+
+    &.active-link {
+      color: var(--primary-blue);
+      background-color: #f0f5fa;
+    }
+  }
 }
 
-.mobile-navigation ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.mobile-navigation li {
-  border-bottom: 1px solid #f0f5fa;
-}
-
-.mobile-navigation a {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 1.5rem;
-  text-decoration: none;
-  color: #333;
-  font-size: 1.1rem;
-}
-
-.mobile-navigation a.active-link {
-  color: var(--primary-blue);
-  background-color: #f0f5fa;
-}
-
-/* --- 4. RESPONSIVE (Media Queries) --- */
+/* --- 4. RESPONSIVE (MEDIA QUERIES) --- */
 @media (min-width: 1024px) {
   .main-nav {
     display: block;
@@ -208,4 +234,3 @@
     display: none;
   }
 }
-/* Note: Le bloc media query pour max-width: 1023px a été retiré */

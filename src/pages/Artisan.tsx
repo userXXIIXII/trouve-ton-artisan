@@ -10,7 +10,7 @@ export default function Artisan() {
 
     if (!artisan) {
         return (
-        <main className="artisan-page container">
+        <main className="artisan-page">
             <h2>Artisan introuvable</h2>
         </main>
         );
@@ -19,31 +19,34 @@ export default function Artisan() {
     const ratingValue = parseInt(artisan.note, 10) || 0;
 
     return (
-        <main className="artisan-page container">
+        <main className="artisan-page">
+
+            <div className="container">
         
-        <section className="artisan-info">
-            <h1 className="artisan-name">{artisan.name}</h1>
+                <section className="artisan-info">
+                    <h1 className="artisan-name">{artisan.name}</h1>
 
-            <div className="artisan-rating">
-                {[...Array(5)].map((_, index) => (
-                    <IoStar 
-                    key={index} 
-                    className={`star ${index < ratingValue ? 'active' : ''}`} 
-                    size={24} 
-                    />
-                ))}
+                    <div className="artisan-rating">
+                        {[...Array(5)].map((_, index) => (
+                            <IoStar 
+                            key={index} 
+                            className={`star ${index < ratingValue ? 'active' : ''}`} 
+                            size={24} 
+                            />
+                        ))}
+                    </div>
+
+                    <h2 className="artisan-specialty-location">
+                        {artisan.specialty} / {artisan.location}
+                    </h2>
+
+                    <p className="artisan-about">{artisan.about}</p>
+                </section>
+
+                <hr className="divider" />
+
+                <ContactForm />
             </div>
-
-            <h2 className="artisan-specialty-location">
-                {artisan.specialty} / {artisan.location}
-            </h2>
-
-            <p className="artisan-about">{artisan.about}</p>
-        </section>
-
-        <hr className="divider" />
-
-        <ContactForm />
 
         </main>
     );
