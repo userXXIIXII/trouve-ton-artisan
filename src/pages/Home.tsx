@@ -48,9 +48,9 @@ export default function Home() {
 
                 {/* Section 3 : Les artisans du bâtiment */}
                 <section className="artisans-section">
+                <div className="title-separator-red"></div>
                 <h2 className="section-title">Artisans du Bâtiment</h2>
-                <div className="title-separator"></div>
-
+                
                 <div className="artisans-grid">
                     {batimentArtisans.map((artisan) => (
                     <ArtisanCard 
