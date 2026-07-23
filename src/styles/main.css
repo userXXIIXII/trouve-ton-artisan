@@ -1,18 +1,18 @@
 /* 🎨 Variables de Design (Tokens Figma) */
 :root {
   /* Couleurs principales (Palette) */
-  --primary-blue: #0074c7;
-  --dark-blue: #00497c;
-  --light-bg: #f1f8fc;
-  --text-dark: #384050;
+    --primary-blue: #0074c7;
+    --dark-blue: #00497c;
+    --light-bg: #f1f8fc;
+    --text-dark: #384050;
 
   /* Couleurs d'accentuation (Palette - à utiliser avec parcimonie) */
-  --accent-red: #cd2c2e;
-  --accent-green: #82b864;
+    --accent-red: #cd2c2e;
+    --accent-green: #82b864;
 
   /* Utilitaires (Si non spécifiés dans la palette, vous pouvez garder les vôtres) */
-  --border-color: #e5edf5;
-  --placeholder-color: #a0aec0;
+    --border-color: #e5edf5;
+    --placeholder-color: #a0aec0;
 }
 
 /* 🧱 Styles Globaux */
@@ -31,7 +31,7 @@ body {
 
 /* --- Réinitialisation et Layout Global --- */
 html, body, #root {
-    height: 100%;
+    min-height: 100vh;
     margin: 0;
     padding: 0;
 }
