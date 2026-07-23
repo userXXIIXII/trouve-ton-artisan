@@ -61,6 +61,7 @@
         color: var(--primary-blue);
         font-weight: bold;
         margin-right: 0.5rem;
+        white-space: nowrap; /* Empêche le retour à la ligne pour le label */
     }
 }
 
