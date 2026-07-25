@@ -5,10 +5,13 @@ import Artisan from './pages/Artisan';
 import NotFound from './pages/NotFound';
 import Footer from './components/Footer';
 import Category from './pages/Category';
+import ScrollToTop from './components/ScrollToTop';
 
 export default function App() {
   return (
     <Router>
+
+      <ScrollToTop /> 
       
       <Header />
 
