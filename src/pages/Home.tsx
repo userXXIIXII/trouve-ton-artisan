@@ -28,7 +28,8 @@ export default function Home() {
                 
                 {/* Section 2 : Les artisans du mois */}
                 <section className="artisans-section">
-                <h2 className="section-title">Les trois artisans du mois</h2>
+                <h1 className="section-title">Les trois artisans du mois</h1>
+
                 <div className="title-separator"></div>
 
                 <div className="artisans-grid">
@@ -48,22 +49,24 @@ export default function Home() {
 
                 {/* Section 3 : Les artisans du bâtiment */}
                 <section className="artisans-section">
-                <div className="title-separator-red"></div>
-                <h2 className="section-title">Artisans du Bâtiment</h2>
-                
-                <div className="artisans-grid">
-                    {batimentArtisans.map((artisan) => (
-                    <ArtisanCard 
-                        key={artisan.id}
-                        id={artisan.id}
-                        name={artisan.name}
-                        note={artisan.note}
-                        specialty={artisan.specialty}
-                        location={artisan.location}
-                        isClickable={true} // Activation de la redirection vers la page Artisan.tsx
-                    />
-                    ))}
-                </div>
+
+                    <div className="title-separator-red"></div>
+                    
+                    <h1 className="section-title">Artisans du Bâtiment</h1>
+                    
+                    <div className="artisans-grid">
+                        {batimentArtisans.map((artisan) => (
+                        <ArtisanCard 
+                            key={artisan.id}
+                            id={artisan.id}
+                            name={artisan.name}
+                            note={artisan.note}
+                            specialty={artisan.specialty}
+                            location={artisan.location}
+                            isClickable={true} // Activation de la redirection vers la page Artisan.tsx
+                        />
+                        ))}
+                    </div>
                 </section>
 
             </div>

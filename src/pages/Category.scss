@@ -14,11 +14,16 @@
 .category-title {
     color: var(--dark-blue);
     font-size: 2rem;
-    margin-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    
+    /* Force le titre à se caler à gauche du conteneur */
+    align-self: flex-start; 
+    text-align: left;
+    width: 100%;
 }
 
 .title-separator {
-    width: 60px;
+    width: 45px;
     height: 4px;
     background-color: var(--primary-blue);
     border-radius: 2px;
