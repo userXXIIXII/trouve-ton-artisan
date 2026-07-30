@@ -26,7 +26,7 @@ export default function Artisan() {
                 <section className="artisan-info">
                     <h1 className="artisan-name">{artisan.name}</h1>
 
-                    <div className="artisan-rating">
+                    <div className="artisan-rating" role="img">
                         {[...Array(5)].map((_, index) => (
                             <IoStar 
                             key={index} 

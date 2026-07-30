@@ -27,7 +27,7 @@ export default function ArtisanCard({
         <article className="artisan-card">
         <h3 className="artisan-name">{name}</h3>
         
-        <div className="artisan-rating" aria-label={`Note de ${ratingValue} sur 5`}>
+        <div className="artisan-rating" role="img" aria-label={`Note de ${ratingValue} sur 5`}>
             {[...Array(5)].map((_, index) => (
             <IoStar 
                 key={index} 
