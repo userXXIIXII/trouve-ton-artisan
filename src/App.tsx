@@ -22,6 +22,9 @@ export default function App() {
       
       <Header />
 
+      {/* Le contenu principal de l'application est encapsulé dans la balise <main> pour des raisons sémantiques et d'accessibilité */ }
+      <main className="main-content">
+
         {/* Suspense est utilisé pour afficher un fallback (chargement) pendant que les composants paresseux sont en cours de chargement */ }
         <Suspense fallback={<div>Chargement...</div>}>
           <Routes>
@@ -40,6 +43,8 @@ export default function App() {
             
           </Routes>
         </Suspense>
+        
+      </main>
 
       <Footer />
       

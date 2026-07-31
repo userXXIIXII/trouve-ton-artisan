@@ -56,6 +56,11 @@ html, body, #root {
 #root {
     display: flex;
     flex-direction: column;
+    min-height: 100vh;
+}
+
+.main-content {
+    flex: 1; /* Le contenu principal prend tout l'espace vide disponible */
 }
 
 /* --- Layout avec Sticky Footer --- */
@@ -70,7 +75,7 @@ main {
 }
 
 .section-title, h1, h2 {
-  font-weight: 700;
+    font-weight: 700;
 }
 
 .container {
