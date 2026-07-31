@@ -26,6 +26,7 @@
     src: url('../assets/fonts/Graphik-Regular-Trial.otf') format('opentype');
     font-weight: 400;
     font-style: normal;
+    font-display: swap; /* Permet un rendu rapide du texte avec une police de secours avant le chargement de la police personnalisée */
 }
 
 @font-face {
@@ -33,6 +34,7 @@
     src: url('../assets/fonts/Graphik-Bold-Trial.otf') format('opentype');
     font-weight: 700; /* Cette ligne est cruciale pour le bold */
     font-style: normal;
+    font-display: swap; /* Permet un rendu rapide du texte avec une police de secours avant le chargement de la police personnalisée */
 }
 
 body {

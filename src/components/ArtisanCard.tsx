@@ -25,16 +25,16 @@ export default function ArtisanCard({
     // 1. On stocke le visuel de la carte dans une constante
     const cardContent = (
         <article className="artisan-card">
-        <h3 className="artisan-name">{name}</h3>
+        <h2 className="artisan-name">{name}</h2>
         
-        <div className="artisan-rating" aria-label={`Note de ${ratingValue} sur 5`}>
+        <div className="artisan-rating" role="img" aria-label={`Note de ${ratingValue} sur 5`}>
             {[...Array(5)].map((_, index) => (
             <IoStar 
                 key={index} 
                 className={`star ${index < ratingValue ? 'active' : ''}`} 
                 size={20} 
             />
-            ))}
+            ))}     
         </div>
         
         <p className="artisan-category"><strong>{specialty}</strong></p>

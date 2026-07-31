@@ -22,7 +22,7 @@ export default function Footer() {
                 </div>
 
                 {/* Bloc Droite : Liens légaux */}
-                <nav className="footer-links">
+                <nav className="footer-links" aria-label="Navigation secondaire">
                 <ul>
                     <li><Link to="#">Mentions légales</Link></li>
                     <li><Link to="#">Données personnelles</Link></li>

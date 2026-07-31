@@ -28,11 +28,11 @@ export default function Header() {
         
         <div className="header-left">
           <Link to="/" className="logo-link" onClick={closeAll}>
-            <img src="/logo.png" alt="Logo Trouve ton artisan" className="logo" />
+            <img src="/logo.webp" alt="Logo Trouve ton artisan" className="logo" />
           </Link>
         </div>
 
-        <nav className="main-nav">
+        <nav className="main-nav" aria-label="Navigation principale">
           <ul>
             <li><NavLink to="/categorie/Bâtiment" onClick={closeAll} className={({ isActive }) => isActive ? "active-link" : ""}>Bâtiment</NavLink></li>
             <li><NavLink to="/categorie/Services" onClick={closeAll} className={({ isActive }) => isActive ? "active-link" : ""}>Services</NavLink></li>
@@ -67,7 +67,7 @@ export default function Header() {
       </div>
 
       <div className={`mobile-menu-overlay ${isMenuOpen ? 'is-open' : ''}`}>
-        <nav className="mobile-navigation">
+        <nav className="mobile-navigation" aria-label="Navigation mobile">
           <ul>
             <li><NavLink to="/categorie/Bâtiment" onClick={closeAll} className={({ isActive }) => isActive ? "active-link" : ""}>Bâtiment <span><IoChevronForwardOutline /></span></NavLink></li>
             <li><NavLink to="/categorie/Services" onClick={closeAll} className={({ isActive }) => isActive ? "active-link" : ""}>Services <span><IoChevronForwardOutline /></span></NavLink></li>
