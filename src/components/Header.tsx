@@ -1,11 +1,13 @@
 import { useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { IoSearchOutline, IoMenuOutline, IoCloseOutline, IoChevronForwardOutline } from 'react-icons/io5';
+import artisansData from '../data/datas.json';
 import './Header.scss';
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
   const [isSearchOpen, setIsSearchOpen] = useState<boolean>(false);
+  const [searchQuery, setSearchQuery] = useState<string>('');
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -20,7 +22,18 @@ export default function Header() {
   const closeAll = () => {
     setIsMenuOpen(false);
     setIsSearchOpen(false);
+    setSearchQuery('');
   };
+
+  // Filtrage intelligent : nom, spécialité ou location (ville)
+  const filteredArtisans = searchQuery.trim() === '' ? [] : artisansData.filter((artisan) => {
+    const query = searchQuery.toLowerCase();
+    const nameMatch = artisan.name.toLowerCase().includes(query);
+    const specialtyMatch = artisan.specialty.toLowerCase().includes(query);
+    const locationMatch = artisan.location.toLowerCase().includes(query);
+    
+    return nameMatch || specialtyMatch || locationMatch;
+  });
 
   return (
     <header className="main-header">
@@ -42,9 +55,37 @@ export default function Header() {
         </nav>
 
         <div className="header-actions">
-          <div className="search-bar-container">
-            <input type="text" placeholder="Cherchez ..." className="search-input" />
+          {/* BARRE DE RECHERCHE DESKTOP */}
+          <div className="search-bar-container" style={{ position: 'relative' }}>
+            <input 
+              type="text" 
+              placeholder="Nom, spécialité, ville..." 
+              className="search-input" 
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+            />
             <IoSearchOutline className="search-icon-inside" size={18} />
+
+            {/* LISTE DÉROULANTE DES RÉSULTATS DESKTOP */}
+            {searchQuery.trim() !== '' && (
+              <div className="search-results-dropdown">
+                {filteredArtisans.length > 0 ? (
+                  filteredArtisans.map((artisan) => (
+                    <Link 
+                      key={artisan.id} 
+                      to={`/artisan/${artisan.id}`} 
+                      className="search-result-item"
+                      onClick={closeAll}
+                    >
+                      <span className="result-name">{artisan.name}</span>
+                      <span className="result-details">{artisan.specialty} - {artisan.location}</span>
+                    </Link>
+                  ))
+                ) : (
+                  <div className="no-result">Aucun artisan trouvé</div>
+                )}
+              </div>
+            )}
           </div>
 
           <button className="mobile-search-btn" onClick={toggleSearch} aria-label="Rechercher">
@@ -57,12 +98,39 @@ export default function Header() {
         </div>
       </div>
 
+      {/* RECHERCHE MOBILE OVERLAY */}
       <div className={`mobile-search-overlay ${isSearchOpen ? 'is-open' : ''}`} onClick={toggleSearch}>
         <div className="mobile-search-container-inner" onClick={(e) => e.stopPropagation()}>
           <div className="mobile-search-input-wrapper">
-            <input type="text" placeholder="Rechercher" />
+            <input 
+              type="text" 
+              placeholder="Rechercher par nom, spécialité, ville..." 
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+            />
             <IoSearchOutline className="icon" size={20} />
           </div>
+
+          {/* LISTE DES RÉSULTATS MOBILE */}
+          {searchQuery.trim() !== '' && (
+            <div className="mobile-search-results">
+              {filteredArtisans.length > 0 ? (
+                filteredArtisans.map((artisan) => (
+                  <Link 
+                    key={artisan.id} 
+                    to={`/artisan/${artisan.id}`} 
+                    className="search-result-item"
+                    onClick={closeAll}
+                  >
+                    <span className="result-name">{artisan.name}</span>
+                    <span className="result-details">{artisan.specialty} ({artisan.location})</span>
+                  </Link>
+                ))
+              ) : (
+                <div className="no-result">Aucun artisan trouvé</div>
+              )}
+            </div>
+          )}
         </div>
       </div>
 
