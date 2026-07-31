@@ -28,7 +28,7 @@ export default function Header() {
         
         <div className="header-left">
           <Link to="/" className="logo-link" onClick={closeAll}>
-            <img src="/logo.png" alt="Logo Trouve ton artisan" className="logo" />
+            <img src="/logo.webp" alt="Logo Trouve ton artisan" className="logo" />
           </Link>
         </div>
 
