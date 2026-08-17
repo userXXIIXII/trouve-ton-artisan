@@ -5,7 +5,6 @@ import './Home.scss';
 export default function Home() {
   // Filtration des données
     const topArtisans = artisansData.filter(artisan => artisan.top).slice(0, 3);
-    const batimentArtisans = artisansData.filter(artisan => artisan.category === "Bâtiment").slice(0, 3);
 
     return (
         <main className="home-page">
@@ -41,32 +40,10 @@ export default function Home() {
                         note={artisan.note}
                         specialty={artisan.specialty}
                         location={artisan.location}
-                        // isClickable n'est pas défini, la carte reste inerte
+                        isClickable={true} // Activation de la redirection vers la page Artisan.tsx
                     />
                     ))}
                 </div>
-                </section>
-
-                {/* Section 3 : Les artisans du bâtiment */}
-                <section className="artisans-section">
-
-                    <div className="title-separator-red"></div>
-                    
-                    <h1 className="section-title">Artisans du Bâtiment</h1>
-                    
-                    <div className="artisans-grid">
-                        {batimentArtisans.map((artisan) => (
-                        <ArtisanCard 
-                            key={artisan.id}
-                            id={artisan.id}
-                            name={artisan.name}
-                            note={artisan.note}
-                            specialty={artisan.specialty}
-                            location={artisan.location}
-                            isClickable={true} // Activation de la redirection vers la page Artisan.tsx
-                        />
-                        ))}
-                    </div>
                 </section>
 
             </div>
