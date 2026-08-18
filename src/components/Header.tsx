@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
-import { IoSearchOutline, IoMenuOutline, IoCloseOutline, IoArrowForwardOutline } from 'react-icons/io5';
+import { IoSearchOutline, IoMenuOutline, IoCloseOutline } from 'react-icons/io5';
 import artisansData from '../data/datas.json';
 import './Header.scss';
 
@@ -140,10 +140,10 @@ export default function Header() {
       <div className={`mobile-menu-overlay ${isMenuOpen ? 'is-open' : ''}`}>
         <nav className="mobile-navigation" aria-label="Navigation mobile">
           <ul>
-            <li><NavLink to="/categorie/Bâtiment" onClick={closeAll} className={({ isActive }) => isActive ? "active-link" : ""}>Bâtiment <span><IoArrowForwardOutline /></span></NavLink></li>
-            <li><NavLink to="/categorie/Services" onClick={closeAll} className={({ isActive }) => isActive ? "active-link" : ""}>Services <span><IoArrowForwardOutline /></span></NavLink></li>
-            <li><NavLink to="/categorie/Fabrication" onClick={closeAll} className={({ isActive }) => isActive ? "active-link" : ""}>Fabrication <span><IoArrowForwardOutline /></span></NavLink></li>
-            <li><NavLink to="/categorie/Alimentation" onClick={closeAll} className={({ isActive }) => isActive ? "active-link" : ""}>Alimentation <span><IoArrowForwardOutline /></span></NavLink></li>
+            <li><NavLink to="/categorie/Bâtiment" onClick={closeAll} className={({ isActive }) => isActive ? "active-link" : ""}>Bâtiment <span></span></NavLink></li>
+            <li><NavLink to="/categorie/Services" onClick={closeAll} className={({ isActive }) => isActive ? "active-link" : ""}>Services <span></span></NavLink></li>
+            <li><NavLink to="/categorie/Fabrication" onClick={closeAll} className={({ isActive }) => isActive ? "active-link" : ""}>Fabrication <span></span></NavLink></li>
+            <li><NavLink to="/categorie/Alimentation" onClick={closeAll} className={({ isActive }) => isActive ? "active-link" : ""}>Alimentation <span></span></NavLink></li>
           </ul>
         </nav>
       </div>
