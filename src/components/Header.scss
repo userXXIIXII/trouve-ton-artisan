@@ -288,24 +288,25 @@
     list-style: none;
     padding: 0;
     margin: 0;
-  }
 
-  li {
-    border-bottom: 1px solid #f0f5fa;
-  }
+    li {
+      border-bottom: 1px solid var(--border-color);
 
-  a {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 1.5rem;
-    text-decoration: none;
-    color: #333;
-    font-size: 1.1rem;
+      a {
+        display: block;
+        padding: 1.25rem;
+        text-align: left; 
+        font-size: 1.1rem;
+        color: var(--text-dark);
+        text-decoration: none;
+        transition: background-color 0.2s ease;
 
-    &.active-link {
-      color: var(--primary-blue);
-      background-color: #f0f5fa;
+        &:hover, &.active-link {
+          background-color: var(--light-bg);
+          color: var(--primary-blue);
+          font-weight: bold;
+        }
+      }
     }
   }
 }
