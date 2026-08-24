@@ -1,8 +1,7 @@
-import { IoStar, IoChevronForward } from 'react-icons/io5';
+import { IoStar, IoStarHalf, IoStarOutline, IoChevronForward } from 'react-icons/io5';
 import { Link } from 'react-router-dom';
 import './ArtisanCard.scss';
 
-// Ajout de la propriété facultative isClickable (booléen)
 interface ArtisanCardProps {
     id: string;
     name: string;
@@ -18,23 +17,35 @@ export default function ArtisanCard({
     note, 
     specialty, 
     location, 
-    isClickable = false // Par défaut, la carte n'est pas cliquable
-    }: ArtisanCardProps) {
-    const ratingValue = parseInt(note, 10) || 0;
+    isClickable = false 
+}: ArtisanCardProps) {
+    /**
+     * Calcule et affiche dynamiquement la note sous forme d'étoiles (de 1 à 5).
+     * Gère les notes décimales (ex: 4.3) pour afficher des étoiles pleines, 
+     * des demi-étoiles ou des étoiles vides de manière précise.
+     */
+    const ratingValue = parseFloat(String(note).replace(',', '.')) || 0;
 
-    // 1. On stocke le visuel de la carte dans une constante
     const cardContent = (
         <article className="artisan-card">
         <h2 className="artisan-name">{name}</h2>
         
         <div className="artisan-rating" role="img" aria-label={`Note de ${ratingValue} sur 5`}>
-            {[...Array(5)].map((_, index) => (
-            <IoStar 
-                key={index} 
-                className={`star ${index < ratingValue ? 'active' : ''}`} 
-                size={20} 
-            />
-            ))}     
+            {[...Array(5)].map((_, index) => {
+                const starNumber = index + 1;
+
+                // Logique pour choisir la bonne icône d'étoile
+                if (ratingValue >= starNumber) {
+                    // Étoile pleine
+                    return <IoStar key={index} className="star active" size={20} />;
+                } else if (ratingValue >= starNumber - 0.5) {
+                    // Demi-étoile (si la note dépasse l'entier de 0.5 ou plus, ex: 3.5 ou 4.3)
+                    return <IoStarHalf key={index} className="star active" size={20} />;
+                } else {
+                    // Étoile vide
+                    return <IoStarOutline key={index} className="star empty" size={20} />;
+                }
+            })} 
         </div>
         
         <p className="artisan-category"><strong>{specialty}</strong></p>
@@ -47,7 +58,6 @@ export default function ArtisanCard({
         </article>
     );
 
-    // 2. Rendu conditionnel : si la carte doit être cliquable, on l'enveloppe du Link
     if (isClickable) {
         return (
         <Link to={`/artisan/${id}`} className="artisan-card-link">
@@ -56,6 +66,5 @@ export default function ArtisanCard({
         );
     }
 
-    // 3. Sinon, on retourne la carte simple, sans interactivité
     return cardContent;
 }

@@ -39,17 +39,20 @@
     margin: 0 0 0.5rem 0;
 }
 
-  /* Étoiles */
+/* Étoiles */
 .artisan-rating {
     display: flex;
+    align-items: center;
     gap: 0.25rem;
     margin-bottom: 0.75rem;
 
     .star {
-    color: #e0e0e0; 
-
         &.active {
-            color: #7cb342; 
+            color: #7cb342; // Votre couleur active (verte/dorée)
+        }
+        
+        &.empty {
+            color: #e0e0e0; // Couleur pour l'étoile vide
         }
     }
 }
